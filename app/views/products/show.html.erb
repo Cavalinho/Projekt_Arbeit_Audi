@@ -1,32 +1,30 @@
 <!-- Navigation-->
-      
 
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top view-container" id="mainNav">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top view-container" id="mainNav" style="overflow: visible;">
          <div class="box"> ... </div>
-        
-         <a class="navbar-brand">
-        
-        <%= form_tag({:action => "import"},:multipart => true, class: "card-footer_new text-white clearfix small z-1")%>
-        <%= file_field_tag :file %>
-        <%= submit_tag "Import"%> <!--class: "button_new"--> 
-        </a>
-      
+        <button type="button" class="btn btn-warning" id="myBtn" style="margin-top: 8px;">Upload New File</button>
+        <% if false %>
+
+        <% end %>
+
+
       <!--nurin Mobiler Ansicht sichtbar-->
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>
 
-        
+
 
       <!--nur in Mobiler Ansicht sichtbar-->
     <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion" style="overflow: visible;">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link">
-            <i class="fa fa-fw fa-dashboard"></i>  
-          <span><%= link_to "Dashboard",root_path, :class => "nav-link-text" %></span>
-          </a>
+          <%= link_to root_path, class: 'nav-link' do %>
+            <i class="fa  fa-dashboard"></i>
+            <span class="nav-link-text">Dashboard</span>
+          <% end %>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
           <a class="nav-link" href="shopfloor">
@@ -39,7 +37,7 @@
           <a class="nav-link text-center" id="sidenavToggler">
             <i class="fa fa-fw fa-angle-left"></i>
           </a>
-          
+
   </nav>
   <div class="content-wrapper">
     <div class="container-fluid">
@@ -47,7 +45,7 @@
      <!-- Breadcrumbs-->
        <ol class="breadcrumb">
         <li class="breadcrumb-item active">My Dashboard</li>
-         </li>      
+         </li>
       </ol>
       <!-- Breadcrumbs Ende-->
       <!-- Icon Cards-->
@@ -61,7 +59,7 @@
               <div class="mr-5">Übergaben diese Woche! <%= @uebergabe_KW_aktuell.count %></div>
             </div>
             <div class="dropdown">
-              <button id="joe-dropdown" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View Details 
+              <button id="joe-dropdown" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View Details
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" id="joe-menu">
@@ -73,7 +71,7 @@
           </div>
         </div>
         <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card text-white bg-warning h-100"> 
+          <div class="card text-white bg-warning h-100">
             <div class="card-body">
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-list"></i>
@@ -81,7 +79,7 @@
               <div class="mr-5">Rückmeldungen diese Woche! <%= @rueckmeldung_KW_aktuell.count %></div>
             </div>
             <div class="dropdown">
-              <button id="joe-dropdown1" class="btn btn-primary1 dropdown-toggle" type="button" data-toggle="dropdown">View Details 
+              <button id="joe-dropdown1" class="btn btn-primary1 dropdown-toggle" type="button" data-toggle="dropdown">View Details
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu1" id="joe-menu1">
@@ -101,7 +99,7 @@
               <div class="mr-5">Rückmeldungen Alt/Offen! <%= @rueckmeldung_alt.count %></div>
             </div>
             <div class="dropdown">
-              <button id="joe-dropdown2" class="btn btn-primary2 dropdown-toggle" type="button" data-toggle="dropdown">View Details 
+              <button id="joe-dropdown2" class="btn btn-primary2 dropdown-toggle" type="button" data-toggle="dropdown">View Details
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu2" id="joe-menu2">
@@ -129,7 +127,7 @@
           </div>
         </div>
       </div>
-    
+
 
 
       <!-- KPI_Graph = viewport -> sb-admin-chart.js.erb KPI_CSS -> bootstrap.css -->
@@ -137,14 +135,14 @@
         <div class="card-header">
           <i class="fa fa-area-chart"></i> KPI Bericht</div>
         <div class="card-body">
-          
+
           <!--KPI_CSS Hintergrundbild-->
-          
+
           <div class="KPI_CSS" >
             <% @kpi_data.each do |daten| %>
               <%= raw kpi_column(daten)%>
             <% end %>
-           
+
             <% @kpi_Balken.each do |daten| %>
               <%= raw kpi_bbnet(daten) %>
             <% end %>
@@ -154,45 +152,85 @@
             <% @kpi_Balken2.each do |daten| %>
               <%= raw kpi_bbnet2(daten) %>
             <% end %>
-            
+
             <% @BalkenGruen1.each do |daten| %>
               <%= raw kpi_column1(daten) %>
             <% end %>
-            
+
             <% @BalkenRot.each do |daten| %>
               <%= raw kpi_column2(daten) %>
             <% end %>
-        
+
            </div>
-          
-         
+
+
 
           <!-- Wochenbericht Daten aus Controller, the data: {data: @data} calls to_json on @data-->
           <div class="card-header">
           <i class="fa fa-area-chart"></i> Wochenbericht</div>
           <%= content_tag "div", id: "container", data: {data: @data} do %>
-          
-          
+
+
           <% end %>
-         
+
         </div>
       </div>
-    </div> 
+    </div>
   </div>
 </div>
-  
+
 
       <!--<div id="container" style="width:100%;height:172px;" data-chart='<%= @data.to_json %>'></div>-->
-      
-      
+
+
       <!--<div id="container" style="width:100%;height:172px;" data-chart='<%= @data %>' ></div>-->
-     
-       <canvas id="myPieChart" width="50%" height="50" style="display: none;" 
+
+       <canvas id="myPieChart" width="50%" height="50" style="display: none;"
 
        ></canvas>
        <canvas id="myBarChart" width="100" height="50" style="display: none;" ></canvas>
-       
 
+<!-- Modal for file Upload -->
 
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div style="margin-left: 20%;">
+      <%= form_tag({:action => "import"},:multipart => true, class: "")%>
+      <%= file_field_tag :file %>
+      <%= submit_tag "Import", class: "btn btn-warning"%> <!--class: "button_new"-->
+    </div>
+  </div>
+
+</div>
+<script type="text/javascript">
+  // Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
 
 

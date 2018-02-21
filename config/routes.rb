@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  
 
-	#1. ####example for rooting 
-	#get '/index', controller: 'products', action: 'index'	
-	#get  'index', => 'products#index'	
+	#localhost/3000
+	root 'products#show'
+
+
+	#1. ####example for rooting
+	#get '/index', controller: 'products', action: 'index'
+	#get  'index', => 'products#index'
 
 
   #26/09/2017 import from products controller
@@ -13,17 +16,16 @@ Rails.application.routes.draw do
 		collection {get :filter}
 		collection {post :filter}
 
-	end 
+	end
 
-	
+
 	get '/shopfloor', controller: 'products', action: 'shopfloor'
-	
-	#localhost/3000
-	root to:  				'products#show'	
-										
+
+
+
 
 	match 'destroy_them_all', to: 'proudcts#destroy', via: :delete
 
-end											
+end
 
-	
+
