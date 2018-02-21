@@ -1,0 +1,17 @@
+<div class="js-loading loading">
+    <div class="loading-center">
+        <span class="loading-status">Processing XLS File...</span>
+            <div style="display:none;" class="js-loading circle"></div>
+            <div style="display:none;" class="js-loading circle-small"></div>
+            <div style="display:none;" class="js-loading circle-big"></div>
+            <div style="display:none;" class="js-loading circle-inner-inner"></div>
+            <div style="display:none;" class="js-loading circle-inner"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $('.js-loading-btn').click(function(){
+        $('.js-loading').css('position', 'fixed').css('height', '100%');
+        $('.js-loading').fadeIn();
+    });
+</script>

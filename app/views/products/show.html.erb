@@ -200,7 +200,7 @@
     <div style="margin-left: 20%;">
       <%= form_tag({:action => "import"},:multipart => true, class: "")%>
       <%= file_field_tag :file %>
-      <%= submit_tag "Import", class: "btn btn-warning"%> <!--class: "button_new"-->
+      <%= submit_tag "Import", class: "btn btn-warning js-loading-btn"%> <!--class: "button_new"-->
     </div>
   </div>
 
