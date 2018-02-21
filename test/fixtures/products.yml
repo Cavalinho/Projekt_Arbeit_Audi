@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vorhaben: MyString
+  pstatus: 2017-09-27
+  SET: MyText
+  sachbearbeiter: MyString
+  prelevanz: MyString
+
+two:
+  vorhaben: MyString
+  pstatus: 2017-09-27
+  SET: MyText
+  sachbearbeiter: MyString
+  prelevanz: MyString

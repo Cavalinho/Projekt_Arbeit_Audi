@@ -1,0 +1,198 @@
+<!-- Navigation-->
+      
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top view-container" id="mainNav">
+         <div class="box"> ... </div>
+        
+         <a class="navbar-brand">
+        
+        <%= form_tag({:action => "import"},:multipart => true, class: "card-footer_new text-white clearfix small z-1")%>
+        <%= file_field_tag :file %>
+        <%= submit_tag "Import"%> <!--class: "button_new"--> 
+        </a>
+      
+      <!--nurin Mobiler Ansicht sichtbar-->
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+
+        
+
+      <!--nur in Mobiler Ansicht sichtbar-->
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link">
+            <i class="fa fa-fw fa-dashboard"></i>  
+          <span><%= link_to "Dashboard",root_path, :class => "nav-link-text" %></span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+          <a class="nav-link" href="shopfloor">
+            <i class="fa fa-fw fa-area-chart"></i>
+            <span class="nav-link-text">Shopfloor</span>
+          </a>
+
+       <ul class="navbar-nav sidenav-toggler">
+        <li class="nav-item">
+          <a class="nav-link text-center" id="sidenavToggler">
+            <i class="fa fa-fw fa-angle-left"></i>
+          </a>
+          
+  </nav>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+    <!-- Navigation Ende-->
+     <!-- Breadcrumbs-->
+       <ol class="breadcrumb">
+        <li class="breadcrumb-item active">My Dashboard</li>
+         </li>      
+      </ol>
+      <!-- Breadcrumbs Ende-->
+      <!-- Icon Cards-->
+      <div class="row">
+        <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-primary h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-list"></i>
+              </div>
+              <div class="mr-5">Übergaben diese Woche! <%= @uebergabe_KW_aktuell.count %></div>
+            </div>
+            <div class="dropdown">
+              <button id="joe-dropdown" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View Details 
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" id="joe-menu">
+                  <% @uebergabe_KW_aktuell.each do |product| %>
+                 <li> Vorhaben: <%=product.Vorhaben%> Statusdatum: <%=product.P_Statusdatum%> SET: <%=product.SET%> Beschreibung: <%=product.Denominacion%> Sachbearbeiter: <%=product.Sachbearbeiter%></li><       >
+                <%end%>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-warning h-100"> 
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-list"></i>
+              </div>
+              <div class="mr-5">Rückmeldungen diese Woche! <%= @rueckmeldung_KW_aktuell.count %></div>
+            </div>
+            <div class="dropdown">
+              <button id="joe-dropdown1" class="btn btn-primary1 dropdown-toggle" type="button" data-toggle="dropdown">View Details 
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu1" id="joe-menu1">
+                  <% @rueckmeldung_KW_aktuell.each do |product| %>
+                 <li> Vorhaben: <%=product.Vorhaben%> Statusdatum: <%=product.P_Statusdatum%> SET: <%=product.SET%> Beschreibung: <%=product.Denominacion%> Sachbearbeiter: <%=product.Sachbearbeiter%></li><       >
+                <%end%>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-success h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-list"></i>
+              </div>
+              <div class="mr-5">Rückmeldungen Alt/Offen! <%= @rueckmeldung_alt.count %></div>
+            </div>
+            <div class="dropdown">
+              <button id="joe-dropdown2" class="btn btn-primary2 dropdown-toggle" type="button" data-toggle="dropdown">View Details 
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu2" id="joe-menu2">
+                  <% @rueckmeldung_alt.each do |product| %>
+                 <li>Vorhaben: <%=product.Vorhaben%> Statusdatum: <%=product.P_Statusdatum%> SET: <%=product.SET%> Beschreibung: <%=product.Denominacion%> Sachbearbeiter: <%=product.Sachbearbeiter%></li><       >
+                <%end%>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-danger o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-list"></i>
+              </div>
+              <div class="mr-5">Kennzahlen!</div>
+            </div>
+            <a class="card-footer text-white clearfix small z-1" href="#">
+              <span class="float-left">View Details</span>
+              <span class="float-right">
+                <i class="fa fa-angle-right"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    
+
+
+      <!-- KPI_Graph = viewport -> sb-admin-chart.js.erb KPI_CSS -> bootstrap.css -->
+      <div class="card card-outline-primary mb-3 text-center">
+        <div class="card-header">
+          <i class="fa fa-area-chart"></i> KPI Bericht</div>
+        <div class="card-body">
+          
+          <!--KPI_CSS Hintergrundbild-->
+          
+          <div class="KPI_CSS" >
+            <% @kpi_data.each do |daten| %>
+              <%= raw kpi_column(daten)%>
+            <% end %>
+           
+            <% @kpi_Balken.each do |daten| %>
+              <%= raw kpi_bbnet(daten) %>
+            <% end %>
+            <% @kpi_Balken1.each do |daten| %>
+              <%= raw kpi_bbnet1(daten) %>
+            <% end %>
+            <% @kpi_Balken2.each do |daten| %>
+              <%= raw kpi_bbnet2(daten) %>
+            <% end %>
+            
+            <% @BalkenGruen1.each do |daten| %>
+              <%= raw kpi_column1(daten) %>
+            <% end %>
+            
+            <% @BalkenRot.each do |daten| %>
+              <%= raw kpi_column2(daten) %>
+            <% end %>
+        
+           </div>
+          
+         
+
+          <!-- Wochenbericht Daten aus Controller, the data: {data: @data} calls to_json on @data-->
+          <div class="card-header">
+          <i class="fa fa-area-chart"></i> Wochenbericht</div>
+          <%= content_tag "div", id: "container", data: {data: @data} do %>
+          
+          
+          <% end %>
+         
+        </div>
+      </div>
+    </div> 
+  </div>
+</div>
+  
+
+      <!--<div id="container" style="width:100%;height:172px;" data-chart='<%= @data.to_json %>'></div>-->
+      
+      
+      <!--<div id="container" style="width:100%;height:172px;" data-chart='<%= @data %>' ></div>-->
+     
+       <canvas id="myPieChart" width="50%" height="50" style="display: none;" 
+
+       ></canvas>
+       <canvas id="myBarChart" width="100" height="50" style="display: none;" ></canvas>
+       
+
+
+
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Audi</title>
+
+
+  <head>
+  
+
+ <!--assets pipeline: rails information getting from app/assets/javascript/application.js and from app/assets/stylesheets/application.scss-->
+
+ 
+  <%= stylesheet_link_tag    'application', media: 'all'%>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+  
+  <!--Implementation für Wochenbericht_Graph JS Template extern von Website-->
+  <script src="https://code.highcharts.com/highcharts.src.js"></script>
+  <!--Implementation für Shopfloor JS Template extern von Website-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" ></script>
+    <!--Implementation für Shopfloor JS Template (dots) extern von Website-->
+   <script src=http://www.chartjs.org/dist/2.7.1/Chart.bundle.js></script>
+   <script src=http://www.chartjs.org/samples/latest/utils.js></script>
+
+
+</head> 
+
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  
+<%=yield%>
+
+
+
+</body>
+	
+
+
+</html>
+

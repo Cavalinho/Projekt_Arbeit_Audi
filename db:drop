@@ -1,0 +1,16 @@
+Dropped database 'db/development.sqlite3'
+Dropped database 'db/test.sqlite3'
+Created database 'db/development.sqlite3'
+Created database 'db/test.sqlite3'
+-- create_table("js_data", {:force=>:cascade})
+   -> 0.0058s
+-- create_table("products", {:force=>:cascade})
+   -> 0.0018s
+-- initialize_schema_migrations_table()
+   -> 0.0013s
+-- create_table("js_data", {:force=>:cascade})
+   -> 0.0016s
+-- create_table("products", {:force=>:cascade})
+   -> 0.0014s
+-- initialize_schema_migrations_table()
+   -> 0.0012s

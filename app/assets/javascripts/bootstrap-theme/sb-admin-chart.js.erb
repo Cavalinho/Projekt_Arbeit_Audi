@@ -1,0 +1,99 @@
+
+
+
+
+
+// Chart.js scripts
+// -- Set new default font family and font color to mimic Bootstrap's default styling
+$(document).ready(function(){
+
+
+Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = '#292b2c';
+
+
+
+
+
+
+// -- Bar Chart Wochenbericht
+
+Highcharts.chart('container', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: ''
+    },
+    xAxis: {
+               categories: ['vor 4 Wochen', 'vor 3 Wochen', 'vorletzte Woche', 'letzte Woche']        
+    },
+   
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Eingänge und Ausgänge bei M/PV-1'
+        },
+        stackLabels: {
+            enabled: false,
+            style: {
+                fontWeight: 'bold',
+                color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+            }
+        }
+    },
+    legend: {
+        align: 'right',
+        x: -380,
+        verticalAlign: 'top',
+        y: 25,
+        floating: true,
+        backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+        borderColor: '#CCC',
+        borderWidth: 1,
+        shadow: false
+    },
+    tooltip: {
+        headerFormat: '<b>{point.x}</b><br/>',
+        pointFormat: '{series.name}: {point.y}<br/>'
+    },
+    plotOptions: {
+        column: {
+            stacking: 'normal',
+            dataLabels: {
+                enabled: true,
+                color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+            }
+        }
+    },
+    
+    // Daten von Controller product.rb
+    series: $('#container').data('data'), 
+    colors: [
+        '#248f24',
+        '#ff0000',
+        '#4d4d4d',
+        '#00008B', 
+    ]
+
+});
+
+
+// -- Pie Chart Example
+var ctx = document.getElementById("myPieChart");
+var myPieChart = new Chart(ctx, {
+  type: 'pie',
+  data: {
+    labels: ["Blue", "Red", "Yellow", "Green"],
+    datasets: [{
+      data: [12.21, 15.58, 11.25, 8.32],
+      backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
+    }],
+  },
+});
+
+
+// Shopfloor
+
+
+});
