@@ -139,13 +139,13 @@
           <!--KPI_CSS Hintergrundbild-->
 
           <div class="KPI_CSS" >
-            <% @kpi_data.each do |daten| %>
-              <%= raw kpi_column(daten)%>
+
+
+            <% @y_werte.each_with_index do |y, i| %>
+              <%= raw kpi_column(i + 1, y) %>
             <% end %>
 
-            <% @kpi_Balken.each do |daten| %>
-              <%= raw kpi_bbnet(daten) %>
-            <% end %>
+
             <% @kpi_Balken1.each do |daten| %>
               <%= raw kpi_bbnet1(daten) %>
             <% end %>
