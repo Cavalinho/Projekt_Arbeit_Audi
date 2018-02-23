@@ -1,9 +1,5 @@
 module ProductsHelper
-    def random_x
-        80 + rand(830)
-    end
-
-    def random_y
-        5 + rand(445)
+    def random_number
+        8 + rand(82)
     end
 end
