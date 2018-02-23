@@ -1,107 +1,83 @@
-	   
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
- <a class="navbar-brand"></a>
-        
-      <!--nurin Mobiler Ansicht sichtbar-->
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-      </button>
 
-        
-
-      <!--nur in Mobiler Ansicht sichtbar-->
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link">
-            <i class="fa fa-fw fa-dashboard"></i>  
-          <span><%= link_to "Dashboard",root_path, :class => "nav-link-text" %></span>
-          </a>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-          <a class="nav-link" href="shopfloor">
-            <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Shopfloor</span>
-          </a>
-
-       <ul class="navbar-nav sidenav-toggler">
-        <li class="nav-item">
-          <a class="nav-link text-center" id="sidenavToggler">
-            <i class="fa fa-fw fa-angle-left"></i>
-          </a>
-          
-  </nav>
 
   <div class="content-wrapper">
     <div class="container-fluid">
     <!-- Navigation Ende-->
      <!-- Breadcrumbs-->
-       <ol class="breadcrumb">    
+       <ol class="breadcrumb">
+         Shopfloor
       </ol>
       <!-- Breadcrumbs Ende-->
       <!-- Icon Cards-->
-      
-    
+
+
       <!-- KPI_Graph = viewport -> sb-admin-chart.js.erb KPI_CSS -> bootstrap.css -->
       <div class="card card-outline-primary mb-3 text-center">
         <div class="card-header">
-          <i class="fa fa-area-chart"></i> Shopfloor</div>
-        	<div class="card-body">
-      			<div class="Shopfloor" >
-					<canvas id="canvas" width="105%" height="50"  ></canvas>
-       		<%= content_tag "div", id: "canvas", daten: {daten: @daten} do %>	 
-             <% end %>
-             </div>
-       		</div> 
+          <i class="fa fa-area-chart"></i> Shopfloor
+        </div>
+      	<div class="card-body">
+    			<div class="Shopfloor" >
+            <% @labels.each do |label| %>
+              <div class="tooltip point" style="top:<%= random_y %>px;left:<%= random_x %>px;">o
+                <span class="tooltiptext"><%= label %></span>
+              </div>
+            <% end %>
+           </div>
+     		</div>
+      </div>
+    </div>
+  </div>
 
-       
-      
-     
 
-<script>  
+
+
+
+
+<script>
 
 	var canvas = document.getElementById('canvas');
 	var ctx = canvas.getContext('2d');
     var color = Chart.helpers.color;
     var myChart = new Chart(ctx, {
-    
-    
+
+
     type: 'scatter',
-    
-    
+
+
 
     data: {
     	// LABEL AUS PRODUCT_CONTROLLER.RB print(array) ZEIGT ALLE VORHABEN
-      labels1: ['Hallo'],
+      labels1: ['Hallo', 'bonjour', 'salut'],
         datasets: [{
           label: 'Legend',
         	 borderColor: window.chartColors.black,
             backgroundColor: color(window.chartColors.black).alpha(0.9).rgbString(),
-             
-            data: [{  
 
-                
+            data: [{
+
+
                // ANZAHL PUNKTE JE NACH FUNKTION generateZahl   x: [generateZahl] y: [generateZahl]
                // LABEL ZEIGT ALLE VORHABEN
-                
-                x: generateZahl(), y: generateZahl(), 
-                },
-
-                {  
 
                 x: generateZahl(), y: generateZahl(),
                 },
 
-                {  
+                {
 
                 x: generateZahl(), y: generateZahl(),
                 },
-              
-                {  
+
+                {
+
+                x: generateZahl(), y: generateZahl(),
+                },
+
+                {
 
                 x: generateZahl(), y: generateZahl(),
                 }
-                
+
             ]
 
         }]
@@ -109,7 +85,7 @@
 
 
     options: {
-        
+
 
         scales: {
                     xAxes: [{
@@ -120,7 +96,7 @@
                                 min: -10,
                                 max: 100,
                             	maxTicksLimit: 10
-                                
+
                             }
                         }],
                     yAxes: [{
@@ -134,10 +110,10 @@
                         }]
     				},
 
-    				legend: { 
+    				legend: {
             display: false
         },
-    
+
     tooltips: {
          callbacks: {
             label: function(tooltipItem, data ) {
@@ -152,11 +128,11 @@
 
 
 
-    
+
 
 });
- 
-// 8 Zahlen zufällig zwische 1- 100   
+
+// 8 Zahlen zufällig zwische 1- 100
 function randomInt(min, max) {
     return Math.round(min + Math.random()*(max-min));
 };
@@ -165,23 +141,23 @@ function generateZahl () {
 
 var arr = [];
 // ANSTATT <1   AUS PRODUCT_CONTROLLER.RB @tunichtvorhanden.count
-while(arr.length < 1){
+while(arr.length < 3){
     var randomnumber = randomInt(1,100);
     if(arr.indexOf(randomnumber) > -1) continue;
     arr[arr.length] = randomnumber;
-    
+
    };
         return arr;
-        
+
 }
-    
-  
-  
 
 
 
-</script> 
-	 
-	
+
+
+
+</script>
+
+
 
 

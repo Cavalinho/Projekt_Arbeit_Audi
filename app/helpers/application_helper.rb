@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+	def set_menu(name)
+		'active' if action_name == name
+	end
+
 
 		#grüner Balken
 	def kpi_column(day, y)

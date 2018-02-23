@@ -216,20 +216,9 @@ class ProductsController < ApplicationController
 
 	def shopfloor
 
+       	@array = Shopfloor.p_status('800').techUnterlagennichtvorhanden.map(&:Vorhaben)
 
-   	@tunichtvorhanden = Shopfloor.p_status('800').techUnterlagennichtvorhanden
-
-   	array = []
-   		@tunichtvorhanden.each do | wert |
-   			array <<  wert.Vorhaben
-   		end
-
-   		@daten = [{
-
-                namen: 	print(array)
-                #daten:  @tunichtvorhanden.count
-            }]
-
+        @labels = ['dog', 'cat', 'fish', 'joe']
 
     end
 
